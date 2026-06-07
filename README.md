@@ -119,6 +119,21 @@ docker compose -f docker-compose.dev.yml up --build
 
 For production deploys, set `NEXT_PUBLIC_SITE_URL` to your public domain before `docker compose build`.
 
+### Docker Hub (pre-built image)
+
+Pull and run anywhere without cloning the repo:
+
+```bash
+docker pull hadiabdul8128/proptech-search-engine:latest
+
+docker run -p 3000:3000 --env-file .env.local \
+  hadiabdul8128/proptech-search-engine:latest
+```
+
+Create `.env.local` from `.env.example` with your Supabase + OpenAI keys. The hosted image uses placeholder public build vars — server features (search API, leads, city pages) work via runtime env. For browser login/dashboard, rebuild the image with your `NEXT_PUBLIC_*` build args or use `docker compose up --build` from the repo.
+
+Image: [hub.docker.com/r/hadiabdul8128/proptech-search-engine](https://hub.docker.com/r/hadiabdul8128/proptech-search-engine)
+
 ## API routes
 
 - `GET /api/search?q=...&city=...&maxPrice=...`
