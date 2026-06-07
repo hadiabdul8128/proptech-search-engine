@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "tsx supabase/seed/seed.ts"
+    "seed": "tsx supabase/seed/seed.ts",
+    "docker:up": "docker compose --env-file .env.local up --build",
+    "docker:down": "docker compose down",
+    "docker:dev": "docker compose -f docker-compose.dev.yml up --build",
+    "docker:seed": "docker compose --env-file .env.local --profile seed run --rm seed"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.16",

@@ -1,0 +1,31 @@
+# dependencies
+node_modules
+npm-debug.log*
+
+# next.js
+.next
+out
+
+# git / editor
+.git
+.gitignore
+.cursor
+.vscode
+
+# env (injected at runtime via compose)
+.env*
+!.env.example
+
+# docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# misc
+README.md
+.DS_Store
+*.md
+!package.json
+
+# supabase local
+supabase/.temp

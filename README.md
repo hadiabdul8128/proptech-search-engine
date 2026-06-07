@@ -69,6 +69,55 @@ Open [http://localhost:3000](http://localhost:3000).
 - `npm run dev` — start Next.js locally
 - `npm run build` — production build
 - `npm run seed` — generate mock listings, embeddings, and demo agents
+- `npm run docker:up` — build and run production container
+- `npm run docker:dev` — run dev server in Docker with hot reload
+
+## Docker
+
+Run the app anywhere with Docker. Supabase stays hosted — the container only needs your env vars in `.env.local`.
+
+### Production
+
+```bash
+cp .env.example .env.local
+# fill in Supabase + OpenAI keys
+
+docker compose --env-file .env.local up --build
+```
+
+App: [http://localhost:3000](http://localhost:3000)
+
+Seed the remote database from a container (one-time):
+
+```bash
+docker compose --env-file .env.local --profile seed run --rm seed
+```
+
+Stop:
+
+```bash
+docker compose down
+```
+
+### Development (hot reload in Docker)
+
+```bash
+docker compose -f docker-compose.dev.yml up --build
+```
+
+### Environment variables
+
+| Variable | Required | Notes |
+|---|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | yes | baked at build + runtime |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | yes | baked at build + runtime |
+| `SUPABASE_SERVICE_ROLE_KEY` | yes | server-only |
+| `OPENAI_API_KEY` | yes | search + seed |
+| `NEXT_PUBLIC_SITE_URL` | yes | use public URL in production |
+| `ADMIN_EMBED_TOKEN` | optional | admin embed route |
+| `APP_PORT` | optional | host port (default `3000`) |
+
+For production deploys, set `NEXT_PUBLIC_SITE_URL` to your public domain before `docker compose build`.
 
 ## API routes
 

@@ -1,6 +1,9 @@
-import "dotenv/config";
+import { config } from "dotenv";
 import { readFileSync, writeFileSync, existsSync } from "fs";
 import { join } from "path";
+
+config({ path: join(process.cwd(), ".env.local") });
+config({ path: join(process.cwd(), ".env") });
 import { createClient } from "@supabase/supabase-js";
 import OpenAI from "openai";
 import { buildEmbeddingText } from "../../lib/search/parse-query";
