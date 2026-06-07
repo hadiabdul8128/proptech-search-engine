@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "austin-tx",
+    "name": "Austin",
+    "state": "TX",
+    "seo_title": "Homes for Sale in Austin, TX | AI Home Search",
+    "seo_description": "Discover Austin homes with AI-powered semantic search. Find family-friendly neighborhoods, modern condos, and Hill Country views.",
+    "intro_md": "Austin blends live music, tech careers, and outdoor living. Search by lifestyle — pools, walkable cafes, top-rated schools, or a quiet backyard in the suburbs.",
+    "hero_image": "https://images.unsplash.com/photo-1531218150217-54595bc2e934?w=1200&h=600&fit=crop"
+  },
+  {
+    "slug": "denver-co",
+    "name": "Denver",
+    "state": "CO",
+    "seo_title": "Homes for Sale in Denver, CO | AI Home Search",
+    "seo_description": "Search Denver listings with natural language. Mountain views, urban lofts, and family neighborhoods near parks and trails.",
+    "intro_md": "Denver offers mountain access, vibrant neighborhoods, and strong job growth. Describe the home you want — sunny patio, home office, or proximity to light rail.",
+    "hero_image": "https://images.unsplash.com/photo-1612892484385-0518c25c9f9e?w=1200&h=600&fit=crop"
+  },
+  {
+    "slug": "seattle-wa",
+    "name": "Seattle",
+    "state": "WA",
+    "seo_title": "Homes for Sale in Seattle, WA | AI Home Search",
+    "seo_description": "Find Seattle homes with semantic AI search. Water views, craftsman charm, and tech-hub convenience.",
+    "intro_md": "From Capitol Hill energy to quiet Eastside cul-de-sacs, Seattle rewards specific searches. Try queries like water view condo or craftsman near parks.",
+    "hero_image": "https://images.unsplash.com/photo-1502175353175-719527175086?w=1200&h=600&fit=crop"
+  },
+  {
+    "slug": "miami-fl",
+    "name": "Miami",
+    "state": "FL",
+    "seo_title": "Homes for Sale in Miami, FL | AI Home Search",
+    "seo_description": "Explore Miami real estate with AI matching. Waterfront living, Art Deco style, and family-friendly suburbs.",
+    "intro_md": "Miami's market spans high-rise waterfront units and spacious suburban homes. Search by lifestyle — pool, marina access, or hurricane-ready construction.",
+    "hero_image": "https://images.unsplash.com/photo-1514215263483-526a989995b8?w=1200&h=600&fit=crop"
+  },
+  {
+    "slug": "nashville-tn",
+    "name": "Nashville",
+    "state": "TN",
+    "seo_title": "Homes for Sale in Nashville, TN | AI Home Search",
+    "seo_description": "Search Nashville homes with AI. Music City charm, growing suburbs, and renovated historic properties.",
+    "intro_md": "Nashville combines Southern hospitality with rapid growth. Find homes near top schools, music venues, or quiet greenbelts with plain-English search.",
+    "hero_image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop"
+  },
+  {
+    "slug": "phoenix-az",
+    "name": "Phoenix",
+    "state": "AZ",
+    "seo_title": "Homes for Sale in Phoenix, AZ | AI Home Search",
+    "seo_description": "Find Phoenix homes using semantic search. Desert modern design, pools, and golf community living.",
+    "intro_md": "Phoenix offers sunny living, resort-style amenities, and diverse neighborhoods. Search for solar panels, casitas, or low-maintenance desert landscaping.",
+    "hero_image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=600&fit=crop"
+  },
+  {
+    "slug": "portland-or",
+    "name": "Portland",
+    "state": "OR",
+    "seo_title": "Homes for Sale in Portland, OR | AI Home Search",
+    "seo_description": "Discover Portland listings with AI search. Walkable neighborhoods, craftsman homes, and garden-ready lots.",
+    "intro_md": "Portland is known for walkability, food culture, and lush greenery. Describe what matters — ADU potential, bike commute, or a fenced garden.",
+    "hero_image": "https://images.unsplash.com/photo-1605276374104-de6862b9b638?w=1200&h=600&fit=crop"
+  },
+  {
+    "slug": "raleigh-nc",
+    "name": "Raleigh",
+    "state": "NC",
+    "seo_title": "Homes for Sale in Raleigh, NC | AI Home Search",
+    "seo_description": "Search Raleigh homes with AI-powered matching. Research Triangle convenience and family-friendly suburbs.",
+    "intro_md": "Raleigh offers strong schools, research jobs, and leafy suburbs. Try searches like home office near RTP or starter home under 500k.",
+    "hero_image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=600&fit=crop"
+  }
+]

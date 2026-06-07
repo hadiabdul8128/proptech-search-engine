@@ -1,0 +1,1282 @@
+[
+  {
+    "citySlug": "austin-tx",
+    "address": "1200 Oak Lane, Austin, TX",
+    "price": 480000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2000,
+    "description": "Sun-filled home with an inviting layout perfect for entertaining and everyday comfort. Located in Austin, this 2-bedroom home offers modern kitchen and open floor plan.",
+    "features": [
+      "modern kitchen",
+      "open floor plan",
+      "natural light",
+      "hardwood floors"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=0-0"
+  },
+  {
+    "citySlug": "austin-tx",
+    "address": "1217 Maple Drive, Austin, TX",
+    "price": 515000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2530,
+    "description": "Move-in ready property on a peaceful block with mature trees and room to grow. Located in Austin, this 3-bedroom home offers fenced backyard and quiet street.",
+    "features": [
+      "fenced backyard",
+      "quiet street",
+      "near parks",
+      "family friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=0-1"
+  },
+  {
+    "citySlug": "austin-tx",
+    "address": "1234 Cedar Court, Austin, TX",
+    "price": 550000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3060,
+    "description": "Thoughtfully updated residence blending character charm with modern finishes. Located in Austin, this 4-bedroom home offers home office and fiber internet.",
+    "features": [
+      "home office",
+      "fiber internet",
+      "updated HVAC",
+      "two-car garage"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=0-2"
+  },
+  {
+    "citySlug": "austin-tx",
+    "address": "1251 Willow Way, Austin, TX",
+    "price": 585000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3590,
+    "description": "Spacious floor plan with flexible living areas and excellent natural light throughout. Located in Austin, this 5-bedroom home offers walkable neighborhood and coffee shops nearby.",
+    "features": [
+      "walkable neighborhood",
+      "coffee shops nearby",
+      "bike friendly",
+      "pet friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=0-3"
+  },
+  {
+    "citySlug": "austin-tx",
+    "address": "1268 Birch Boulevard, Austin, TX",
+    "price": 620000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2320,
+    "description": "Ideal for remote work with a dedicated office nook and strong neighborhood amenities. Located in Austin, this 2-bedroom home offers pool and covered patio.",
+    "features": [
+      "pool",
+      "covered patio",
+      "mountain views",
+      "smart home"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=0-4"
+  },
+  {
+    "citySlug": "austin-tx",
+    "address": "1285 Pine Place, Austin, TX",
+    "price": 655000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2850,
+    "description": "Family-oriented home close to trails, playgrounds, and highly rated schools. Located in Austin, this 3-bedroom home offers top-rated schools and cul-de-sac.",
+    "features": [
+      "top-rated schools",
+      "cul-de-sac",
+      "large yard",
+      "storage shed"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=0-5"
+  },
+  {
+    "citySlug": "austin-tx",
+    "address": "1302 Elm Street, Austin, TX",
+    "price": 690000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3380,
+    "description": "Stylish urban retreat with premium finishes and low-maintenance living. Located in Austin, this 4-bedroom home offers water view and balcony.",
+    "features": [
+      "water view",
+      "balcony",
+      "concierge",
+      "gym access"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=0-6"
+  },
+  {
+    "citySlug": "austin-tx",
+    "address": "1319 Summit Avenue, Austin, TX",
+    "price": 725000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3910,
+    "description": "Resort-style outdoor living with space to relax, dine, and host friends. Located in Austin, this 5-bedroom home offers solar panels and drought tolerant landscaping.",
+    "features": [
+      "solar panels",
+      "drought tolerant landscaping",
+      "desert modern",
+      "guest casita"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=0-7"
+  },
+  {
+    "citySlug": "austin-tx",
+    "address": "1336 River Road, Austin, TX",
+    "price": 760000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2640,
+    "description": "Energy-efficient upgrades and smart storage make daily life effortless. Located in Austin, this 2-bedroom home offers craftsman details and fireplace.",
+    "features": [
+      "craftsman details",
+      "fireplace",
+      "garden beds",
+      "ADU potential"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=0-8"
+  },
+  {
+    "citySlug": "austin-tx",
+    "address": "1353 Park Circle, Austin, TX",
+    "price": 795000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 3170,
+    "description": "Charming curb appeal and a functional layout in a desirable location. Located in Austin, this 3-bedroom home offers renovated baths and quartz counters.",
+    "features": [
+      "renovated baths",
+      "quartz counters",
+      "primary suite",
+      "walk-in closet"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=0-9"
+  },
+  {
+    "citySlug": "denver-co",
+    "address": "1300 Oak Lane, Denver, CO",
+    "price": 492000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2000,
+    "description": "Sun-filled home with an inviting layout perfect for entertaining and everyday comfort. Located in Denver, this 2-bedroom home offers modern kitchen and open floor plan.",
+    "features": [
+      "modern kitchen",
+      "open floor plan",
+      "natural light",
+      "hardwood floors"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=1-0"
+  },
+  {
+    "citySlug": "denver-co",
+    "address": "1317 Maple Drive, Denver, CO",
+    "price": 527000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2530,
+    "description": "Move-in ready property on a peaceful block with mature trees and room to grow. Located in Denver, this 3-bedroom home offers fenced backyard and quiet street.",
+    "features": [
+      "fenced backyard",
+      "quiet street",
+      "near parks",
+      "family friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=1-1"
+  },
+  {
+    "citySlug": "denver-co",
+    "address": "1334 Cedar Court, Denver, CO",
+    "price": 562000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3060,
+    "description": "Thoughtfully updated residence blending character charm with modern finishes. Located in Denver, this 4-bedroom home offers home office and fiber internet.",
+    "features": [
+      "home office",
+      "fiber internet",
+      "updated HVAC",
+      "two-car garage"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=1-2"
+  },
+  {
+    "citySlug": "denver-co",
+    "address": "1351 Willow Way, Denver, CO",
+    "price": 597000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3590,
+    "description": "Spacious floor plan with flexible living areas and excellent natural light throughout. Located in Denver, this 5-bedroom home offers walkable neighborhood and coffee shops nearby.",
+    "features": [
+      "walkable neighborhood",
+      "coffee shops nearby",
+      "bike friendly",
+      "pet friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=1-3"
+  },
+  {
+    "citySlug": "denver-co",
+    "address": "1368 Birch Boulevard, Denver, CO",
+    "price": 632000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2320,
+    "description": "Ideal for remote work with a dedicated office nook and strong neighborhood amenities. Located in Denver, this 2-bedroom home offers pool and covered patio.",
+    "features": [
+      "pool",
+      "covered patio",
+      "mountain views",
+      "smart home"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=1-4"
+  },
+  {
+    "citySlug": "denver-co",
+    "address": "1385 Pine Place, Denver, CO",
+    "price": 667000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2850,
+    "description": "Family-oriented home close to trails, playgrounds, and highly rated schools. Located in Denver, this 3-bedroom home offers top-rated schools and cul-de-sac.",
+    "features": [
+      "top-rated schools",
+      "cul-de-sac",
+      "large yard",
+      "storage shed"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=1-5"
+  },
+  {
+    "citySlug": "denver-co",
+    "address": "1402 Elm Street, Denver, CO",
+    "price": 702000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3380,
+    "description": "Stylish urban retreat with premium finishes and low-maintenance living. Located in Denver, this 4-bedroom home offers water view and balcony.",
+    "features": [
+      "water view",
+      "balcony",
+      "concierge",
+      "gym access"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=1-6"
+  },
+  {
+    "citySlug": "denver-co",
+    "address": "1419 Summit Avenue, Denver, CO",
+    "price": 737000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3910,
+    "description": "Resort-style outdoor living with space to relax, dine, and host friends. Located in Denver, this 5-bedroom home offers solar panels and drought tolerant landscaping.",
+    "features": [
+      "solar panels",
+      "drought tolerant landscaping",
+      "desert modern",
+      "guest casita"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=1-7"
+  },
+  {
+    "citySlug": "denver-co",
+    "address": "1436 River Road, Denver, CO",
+    "price": 772000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2640,
+    "description": "Energy-efficient upgrades and smart storage make daily life effortless. Located in Denver, this 2-bedroom home offers craftsman details and fireplace.",
+    "features": [
+      "craftsman details",
+      "fireplace",
+      "garden beds",
+      "ADU potential"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=1-8"
+  },
+  {
+    "citySlug": "denver-co",
+    "address": "1453 Park Circle, Denver, CO",
+    "price": 807000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 3170,
+    "description": "Charming curb appeal and a functional layout in a desirable location. Located in Denver, this 3-bedroom home offers renovated baths and quartz counters.",
+    "features": [
+      "renovated baths",
+      "quartz counters",
+      "primary suite",
+      "walk-in closet"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=1-9"
+  },
+  {
+    "citySlug": "seattle-wa",
+    "address": "1400 Oak Lane, Seattle, WA",
+    "price": 749000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2000,
+    "description": "Sun-filled home with an inviting layout perfect for entertaining and everyday comfort. Located in Seattle, this 2-bedroom home offers modern kitchen and open floor plan.",
+    "features": [
+      "modern kitchen",
+      "open floor plan",
+      "natural light",
+      "hardwood floors"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=2-0"
+  },
+  {
+    "citySlug": "seattle-wa",
+    "address": "1417 Maple Drive, Seattle, WA",
+    "price": 784000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2530,
+    "description": "Move-in ready property on a peaceful block with mature trees and room to grow. Located in Seattle, this 3-bedroom home offers fenced backyard and quiet street.",
+    "features": [
+      "fenced backyard",
+      "quiet street",
+      "near parks",
+      "family friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=2-1"
+  },
+  {
+    "citySlug": "seattle-wa",
+    "address": "1434 Cedar Court, Seattle, WA",
+    "price": 819000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3060,
+    "description": "Thoughtfully updated residence blending character charm with modern finishes. Located in Seattle, this 4-bedroom home offers home office and fiber internet.",
+    "features": [
+      "home office",
+      "fiber internet",
+      "updated HVAC",
+      "two-car garage"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=2-2"
+  },
+  {
+    "citySlug": "seattle-wa",
+    "address": "1451 Willow Way, Seattle, WA",
+    "price": 854000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3590,
+    "description": "Spacious floor plan with flexible living areas and excellent natural light throughout. Located in Seattle, this 5-bedroom home offers walkable neighborhood and coffee shops nearby.",
+    "features": [
+      "walkable neighborhood",
+      "coffee shops nearby",
+      "bike friendly",
+      "pet friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=2-3"
+  },
+  {
+    "citySlug": "seattle-wa",
+    "address": "1468 Birch Boulevard, Seattle, WA",
+    "price": 889000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2320,
+    "description": "Ideal for remote work with a dedicated office nook and strong neighborhood amenities. Located in Seattle, this 2-bedroom home offers pool and covered patio.",
+    "features": [
+      "pool",
+      "covered patio",
+      "mountain views",
+      "smart home"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=2-4"
+  },
+  {
+    "citySlug": "seattle-wa",
+    "address": "1485 Pine Place, Seattle, WA",
+    "price": 924000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2850,
+    "description": "Family-oriented home close to trails, playgrounds, and highly rated schools. Located in Seattle, this 3-bedroom home offers top-rated schools and cul-de-sac.",
+    "features": [
+      "top-rated schools",
+      "cul-de-sac",
+      "large yard",
+      "storage shed"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=2-5"
+  },
+  {
+    "citySlug": "seattle-wa",
+    "address": "1502 Elm Street, Seattle, WA",
+    "price": 959000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3380,
+    "description": "Stylish urban retreat with premium finishes and low-maintenance living. Located in Seattle, this 4-bedroom home offers water view and balcony.",
+    "features": [
+      "water view",
+      "balcony",
+      "concierge",
+      "gym access"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=2-6"
+  },
+  {
+    "citySlug": "seattle-wa",
+    "address": "1519 Summit Avenue, Seattle, WA",
+    "price": 994000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3910,
+    "description": "Resort-style outdoor living with space to relax, dine, and host friends. Located in Seattle, this 5-bedroom home offers solar panels and drought tolerant landscaping.",
+    "features": [
+      "solar panels",
+      "drought tolerant landscaping",
+      "desert modern",
+      "guest casita"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=2-7"
+  },
+  {
+    "citySlug": "seattle-wa",
+    "address": "1536 River Road, Seattle, WA",
+    "price": 1029000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2640,
+    "description": "Energy-efficient upgrades and smart storage make daily life effortless. Located in Seattle, this 2-bedroom home offers craftsman details and fireplace.",
+    "features": [
+      "craftsman details",
+      "fireplace",
+      "garden beds",
+      "ADU potential"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=2-8"
+  },
+  {
+    "citySlug": "seattle-wa",
+    "address": "1553 Park Circle, Seattle, WA",
+    "price": 1064000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 3170,
+    "description": "Charming curb appeal and a functional layout in a desirable location. Located in Seattle, this 3-bedroom home offers renovated baths and quartz counters.",
+    "features": [
+      "renovated baths",
+      "quartz counters",
+      "primary suite",
+      "walk-in closet"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=2-9"
+  },
+  {
+    "citySlug": "miami-fl",
+    "address": "1500 Oak Lane, Miami, FL",
+    "price": 656000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2000,
+    "description": "Sun-filled home with an inviting layout perfect for entertaining and everyday comfort. Located in Miami, this 2-bedroom home offers modern kitchen and open floor plan.",
+    "features": [
+      "modern kitchen",
+      "open floor plan",
+      "natural light",
+      "hardwood floors"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=3-0"
+  },
+  {
+    "citySlug": "miami-fl",
+    "address": "1517 Maple Drive, Miami, FL",
+    "price": 691000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2530,
+    "description": "Move-in ready property on a peaceful block with mature trees and room to grow. Located in Miami, this 3-bedroom home offers fenced backyard and quiet street.",
+    "features": [
+      "fenced backyard",
+      "quiet street",
+      "near parks",
+      "family friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=3-1"
+  },
+  {
+    "citySlug": "miami-fl",
+    "address": "1534 Cedar Court, Miami, FL",
+    "price": 726000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3060,
+    "description": "Thoughtfully updated residence blending character charm with modern finishes. Located in Miami, this 4-bedroom home offers home office and fiber internet.",
+    "features": [
+      "home office",
+      "fiber internet",
+      "updated HVAC",
+      "two-car garage"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=3-2"
+  },
+  {
+    "citySlug": "miami-fl",
+    "address": "1551 Willow Way, Miami, FL",
+    "price": 761000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3590,
+    "description": "Spacious floor plan with flexible living areas and excellent natural light throughout. Located in Miami, this 5-bedroom home offers walkable neighborhood and coffee shops nearby.",
+    "features": [
+      "walkable neighborhood",
+      "coffee shops nearby",
+      "bike friendly",
+      "pet friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=3-3"
+  },
+  {
+    "citySlug": "miami-fl",
+    "address": "1568 Birch Boulevard, Miami, FL",
+    "price": 796000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2320,
+    "description": "Ideal for remote work with a dedicated office nook and strong neighborhood amenities. Located in Miami, this 2-bedroom home offers pool and covered patio.",
+    "features": [
+      "pool",
+      "covered patio",
+      "mountain views",
+      "smart home"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=3-4"
+  },
+  {
+    "citySlug": "miami-fl",
+    "address": "1585 Pine Place, Miami, FL",
+    "price": 831000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2850,
+    "description": "Family-oriented home close to trails, playgrounds, and highly rated schools. Located in Miami, this 3-bedroom home offers top-rated schools and cul-de-sac.",
+    "features": [
+      "top-rated schools",
+      "cul-de-sac",
+      "large yard",
+      "storage shed"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=3-5"
+  },
+  {
+    "citySlug": "miami-fl",
+    "address": "1602 Elm Street, Miami, FL",
+    "price": 866000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3380,
+    "description": "Stylish urban retreat with premium finishes and low-maintenance living. Located in Miami, this 4-bedroom home offers water view and balcony.",
+    "features": [
+      "water view",
+      "balcony",
+      "concierge",
+      "gym access"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=3-6"
+  },
+  {
+    "citySlug": "miami-fl",
+    "address": "1619 Summit Avenue, Miami, FL",
+    "price": 901000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3910,
+    "description": "Resort-style outdoor living with space to relax, dine, and host friends. Located in Miami, this 5-bedroom home offers solar panels and drought tolerant landscaping.",
+    "features": [
+      "solar panels",
+      "drought tolerant landscaping",
+      "desert modern",
+      "guest casita"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=3-7"
+  },
+  {
+    "citySlug": "miami-fl",
+    "address": "1636 River Road, Miami, FL",
+    "price": 936000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2640,
+    "description": "Energy-efficient upgrades and smart storage make daily life effortless. Located in Miami, this 2-bedroom home offers craftsman details and fireplace.",
+    "features": [
+      "craftsman details",
+      "fireplace",
+      "garden beds",
+      "ADU potential"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=3-8"
+  },
+  {
+    "citySlug": "miami-fl",
+    "address": "1653 Park Circle, Miami, FL",
+    "price": 971000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 3170,
+    "description": "Charming curb appeal and a functional layout in a desirable location. Located in Miami, this 3-bedroom home offers renovated baths and quartz counters.",
+    "features": [
+      "renovated baths",
+      "quartz counters",
+      "primary suite",
+      "walk-in closet"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=3-9"
+  },
+  {
+    "citySlug": "nashville-tn",
+    "address": "1600 Oak Lane, Nashville, TN",
+    "price": 528000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2000,
+    "description": "Sun-filled home with an inviting layout perfect for entertaining and everyday comfort. Located in Nashville, this 2-bedroom home offers modern kitchen and open floor plan.",
+    "features": [
+      "modern kitchen",
+      "open floor plan",
+      "natural light",
+      "hardwood floors"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=4-0"
+  },
+  {
+    "citySlug": "nashville-tn",
+    "address": "1617 Maple Drive, Nashville, TN",
+    "price": 563000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2530,
+    "description": "Move-in ready property on a peaceful block with mature trees and room to grow. Located in Nashville, this 3-bedroom home offers fenced backyard and quiet street.",
+    "features": [
+      "fenced backyard",
+      "quiet street",
+      "near parks",
+      "family friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=4-1"
+  },
+  {
+    "citySlug": "nashville-tn",
+    "address": "1634 Cedar Court, Nashville, TN",
+    "price": 598000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3060,
+    "description": "Thoughtfully updated residence blending character charm with modern finishes. Located in Nashville, this 4-bedroom home offers home office and fiber internet.",
+    "features": [
+      "home office",
+      "fiber internet",
+      "updated HVAC",
+      "two-car garage"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=4-2"
+  },
+  {
+    "citySlug": "nashville-tn",
+    "address": "1651 Willow Way, Nashville, TN",
+    "price": 633000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3590,
+    "description": "Spacious floor plan with flexible living areas and excellent natural light throughout. Located in Nashville, this 5-bedroom home offers walkable neighborhood and coffee shops nearby.",
+    "features": [
+      "walkable neighborhood",
+      "coffee shops nearby",
+      "bike friendly",
+      "pet friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=4-3"
+  },
+  {
+    "citySlug": "nashville-tn",
+    "address": "1668 Birch Boulevard, Nashville, TN",
+    "price": 668000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2320,
+    "description": "Ideal for remote work with a dedicated office nook and strong neighborhood amenities. Located in Nashville, this 2-bedroom home offers pool and covered patio.",
+    "features": [
+      "pool",
+      "covered patio",
+      "mountain views",
+      "smart home"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=4-4"
+  },
+  {
+    "citySlug": "nashville-tn",
+    "address": "1685 Pine Place, Nashville, TN",
+    "price": 703000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2850,
+    "description": "Family-oriented home close to trails, playgrounds, and highly rated schools. Located in Nashville, this 3-bedroom home offers top-rated schools and cul-de-sac.",
+    "features": [
+      "top-rated schools",
+      "cul-de-sac",
+      "large yard",
+      "storage shed"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=4-5"
+  },
+  {
+    "citySlug": "nashville-tn",
+    "address": "1702 Elm Street, Nashville, TN",
+    "price": 738000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3380,
+    "description": "Stylish urban retreat with premium finishes and low-maintenance living. Located in Nashville, this 4-bedroom home offers water view and balcony.",
+    "features": [
+      "water view",
+      "balcony",
+      "concierge",
+      "gym access"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=4-6"
+  },
+  {
+    "citySlug": "nashville-tn",
+    "address": "1719 Summit Avenue, Nashville, TN",
+    "price": 773000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3910,
+    "description": "Resort-style outdoor living with space to relax, dine, and host friends. Located in Nashville, this 5-bedroom home offers solar panels and drought tolerant landscaping.",
+    "features": [
+      "solar panels",
+      "drought tolerant landscaping",
+      "desert modern",
+      "guest casita"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=4-7"
+  },
+  {
+    "citySlug": "nashville-tn",
+    "address": "1736 River Road, Nashville, TN",
+    "price": 808000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2640,
+    "description": "Energy-efficient upgrades and smart storage make daily life effortless. Located in Nashville, this 2-bedroom home offers craftsman details and fireplace.",
+    "features": [
+      "craftsman details",
+      "fireplace",
+      "garden beds",
+      "ADU potential"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=4-8"
+  },
+  {
+    "citySlug": "nashville-tn",
+    "address": "1753 Park Circle, Nashville, TN",
+    "price": 843000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 3170,
+    "description": "Charming curb appeal and a functional layout in a desirable location. Located in Nashville, this 3-bedroom home offers renovated baths and quartz counters.",
+    "features": [
+      "renovated baths",
+      "quartz counters",
+      "primary suite",
+      "walk-in closet"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=4-9"
+  },
+  {
+    "citySlug": "phoenix-az",
+    "address": "1700 Oak Lane, Phoenix, AZ",
+    "price": 540000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2000,
+    "description": "Sun-filled home with an inviting layout perfect for entertaining and everyday comfort. Located in Phoenix, this 2-bedroom home offers modern kitchen and open floor plan.",
+    "features": [
+      "modern kitchen",
+      "open floor plan",
+      "natural light",
+      "hardwood floors"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=5-0"
+  },
+  {
+    "citySlug": "phoenix-az",
+    "address": "1717 Maple Drive, Phoenix, AZ",
+    "price": 575000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2530,
+    "description": "Move-in ready property on a peaceful block with mature trees and room to grow. Located in Phoenix, this 3-bedroom home offers fenced backyard and quiet street.",
+    "features": [
+      "fenced backyard",
+      "quiet street",
+      "near parks",
+      "family friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=5-1"
+  },
+  {
+    "citySlug": "phoenix-az",
+    "address": "1734 Cedar Court, Phoenix, AZ",
+    "price": 610000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3060,
+    "description": "Thoughtfully updated residence blending character charm with modern finishes. Located in Phoenix, this 4-bedroom home offers home office and fiber internet.",
+    "features": [
+      "home office",
+      "fiber internet",
+      "updated HVAC",
+      "two-car garage"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=5-2"
+  },
+  {
+    "citySlug": "phoenix-az",
+    "address": "1751 Willow Way, Phoenix, AZ",
+    "price": 645000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3590,
+    "description": "Spacious floor plan with flexible living areas and excellent natural light throughout. Located in Phoenix, this 5-bedroom home offers walkable neighborhood and coffee shops nearby.",
+    "features": [
+      "walkable neighborhood",
+      "coffee shops nearby",
+      "bike friendly",
+      "pet friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=5-3"
+  },
+  {
+    "citySlug": "phoenix-az",
+    "address": "1768 Birch Boulevard, Phoenix, AZ",
+    "price": 680000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2320,
+    "description": "Ideal for remote work with a dedicated office nook and strong neighborhood amenities. Located in Phoenix, this 2-bedroom home offers pool and covered patio.",
+    "features": [
+      "pool",
+      "covered patio",
+      "mountain views",
+      "smart home"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=5-4"
+  },
+  {
+    "citySlug": "phoenix-az",
+    "address": "1785 Pine Place, Phoenix, AZ",
+    "price": 715000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2850,
+    "description": "Family-oriented home close to trails, playgrounds, and highly rated schools. Located in Phoenix, this 3-bedroom home offers top-rated schools and cul-de-sac.",
+    "features": [
+      "top-rated schools",
+      "cul-de-sac",
+      "large yard",
+      "storage shed"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=5-5"
+  },
+  {
+    "citySlug": "phoenix-az",
+    "address": "1802 Elm Street, Phoenix, AZ",
+    "price": 750000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3380,
+    "description": "Stylish urban retreat with premium finishes and low-maintenance living. Located in Phoenix, this 4-bedroom home offers water view and balcony.",
+    "features": [
+      "water view",
+      "balcony",
+      "concierge",
+      "gym access"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=5-6"
+  },
+  {
+    "citySlug": "phoenix-az",
+    "address": "1819 Summit Avenue, Phoenix, AZ",
+    "price": 785000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3910,
+    "description": "Resort-style outdoor living with space to relax, dine, and host friends. Located in Phoenix, this 5-bedroom home offers solar panels and drought tolerant landscaping.",
+    "features": [
+      "solar panels",
+      "drought tolerant landscaping",
+      "desert modern",
+      "guest casita"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=5-7"
+  },
+  {
+    "citySlug": "phoenix-az",
+    "address": "1836 River Road, Phoenix, AZ",
+    "price": 820000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2640,
+    "description": "Energy-efficient upgrades and smart storage make daily life effortless. Located in Phoenix, this 2-bedroom home offers craftsman details and fireplace.",
+    "features": [
+      "craftsman details",
+      "fireplace",
+      "garden beds",
+      "ADU potential"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=5-8"
+  },
+  {
+    "citySlug": "phoenix-az",
+    "address": "1853 Park Circle, Phoenix, AZ",
+    "price": 855000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 3170,
+    "description": "Charming curb appeal and a functional layout in a desirable location. Located in Phoenix, this 3-bedroom home offers renovated baths and quartz counters.",
+    "features": [
+      "renovated baths",
+      "quartz counters",
+      "primary suite",
+      "walk-in closet"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=5-9"
+  },
+  {
+    "citySlug": "portland-or",
+    "address": "1800 Oak Lane, Portland, OR",
+    "price": 552000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2000,
+    "description": "Sun-filled home with an inviting layout perfect for entertaining and everyday comfort. Located in Portland, this 2-bedroom home offers modern kitchen and open floor plan.",
+    "features": [
+      "modern kitchen",
+      "open floor plan",
+      "natural light",
+      "hardwood floors"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=6-0"
+  },
+  {
+    "citySlug": "portland-or",
+    "address": "1817 Maple Drive, Portland, OR",
+    "price": 587000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2530,
+    "description": "Move-in ready property on a peaceful block with mature trees and room to grow. Located in Portland, this 3-bedroom home offers fenced backyard and quiet street.",
+    "features": [
+      "fenced backyard",
+      "quiet street",
+      "near parks",
+      "family friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=6-1"
+  },
+  {
+    "citySlug": "portland-or",
+    "address": "1834 Cedar Court, Portland, OR",
+    "price": 622000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3060,
+    "description": "Thoughtfully updated residence blending character charm with modern finishes. Located in Portland, this 4-bedroom home offers home office and fiber internet.",
+    "features": [
+      "home office",
+      "fiber internet",
+      "updated HVAC",
+      "two-car garage"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=6-2"
+  },
+  {
+    "citySlug": "portland-or",
+    "address": "1851 Willow Way, Portland, OR",
+    "price": 657000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3590,
+    "description": "Spacious floor plan with flexible living areas and excellent natural light throughout. Located in Portland, this 5-bedroom home offers walkable neighborhood and coffee shops nearby.",
+    "features": [
+      "walkable neighborhood",
+      "coffee shops nearby",
+      "bike friendly",
+      "pet friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=6-3"
+  },
+  {
+    "citySlug": "portland-or",
+    "address": "1868 Birch Boulevard, Portland, OR",
+    "price": 692000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2320,
+    "description": "Ideal for remote work with a dedicated office nook and strong neighborhood amenities. Located in Portland, this 2-bedroom home offers pool and covered patio.",
+    "features": [
+      "pool",
+      "covered patio",
+      "mountain views",
+      "smart home"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=6-4"
+  },
+  {
+    "citySlug": "portland-or",
+    "address": "1885 Pine Place, Portland, OR",
+    "price": 727000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2850,
+    "description": "Family-oriented home close to trails, playgrounds, and highly rated schools. Located in Portland, this 3-bedroom home offers top-rated schools and cul-de-sac.",
+    "features": [
+      "top-rated schools",
+      "cul-de-sac",
+      "large yard",
+      "storage shed"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=6-5"
+  },
+  {
+    "citySlug": "portland-or",
+    "address": "1902 Elm Street, Portland, OR",
+    "price": 762000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3380,
+    "description": "Stylish urban retreat with premium finishes and low-maintenance living. Located in Portland, this 4-bedroom home offers water view and balcony.",
+    "features": [
+      "water view",
+      "balcony",
+      "concierge",
+      "gym access"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=6-6"
+  },
+  {
+    "citySlug": "portland-or",
+    "address": "1919 Summit Avenue, Portland, OR",
+    "price": 797000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3910,
+    "description": "Resort-style outdoor living with space to relax, dine, and host friends. Located in Portland, this 5-bedroom home offers solar panels and drought tolerant landscaping.",
+    "features": [
+      "solar panels",
+      "drought tolerant landscaping",
+      "desert modern",
+      "guest casita"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=6-7"
+  },
+  {
+    "citySlug": "portland-or",
+    "address": "1936 River Road, Portland, OR",
+    "price": 832000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2640,
+    "description": "Energy-efficient upgrades and smart storage make daily life effortless. Located in Portland, this 2-bedroom home offers craftsman details and fireplace.",
+    "features": [
+      "craftsman details",
+      "fireplace",
+      "garden beds",
+      "ADU potential"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=6-8"
+  },
+  {
+    "citySlug": "portland-or",
+    "address": "1953 Park Circle, Portland, OR",
+    "price": 867000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 3170,
+    "description": "Charming curb appeal and a functional layout in a desirable location. Located in Portland, this 3-bedroom home offers renovated baths and quartz counters.",
+    "features": [
+      "renovated baths",
+      "quartz counters",
+      "primary suite",
+      "walk-in closet"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=6-9"
+  },
+  {
+    "citySlug": "raleigh-nc",
+    "address": "1900 Oak Lane, Raleigh, NC",
+    "price": 564000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2000,
+    "description": "Sun-filled home with an inviting layout perfect for entertaining and everyday comfort. Located in Raleigh, this 2-bedroom home offers modern kitchen and open floor plan.",
+    "features": [
+      "modern kitchen",
+      "open floor plan",
+      "natural light",
+      "hardwood floors"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=7-0"
+  },
+  {
+    "citySlug": "raleigh-nc",
+    "address": "1917 Maple Drive, Raleigh, NC",
+    "price": 599000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2530,
+    "description": "Move-in ready property on a peaceful block with mature trees and room to grow. Located in Raleigh, this 3-bedroom home offers fenced backyard and quiet street.",
+    "features": [
+      "fenced backyard",
+      "quiet street",
+      "near parks",
+      "family friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=7-1"
+  },
+  {
+    "citySlug": "raleigh-nc",
+    "address": "1934 Cedar Court, Raleigh, NC",
+    "price": 634000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3060,
+    "description": "Thoughtfully updated residence blending character charm with modern finishes. Located in Raleigh, this 4-bedroom home offers home office and fiber internet.",
+    "features": [
+      "home office",
+      "fiber internet",
+      "updated HVAC",
+      "two-car garage"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=7-2"
+  },
+  {
+    "citySlug": "raleigh-nc",
+    "address": "1951 Willow Way, Raleigh, NC",
+    "price": 669000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3590,
+    "description": "Spacious floor plan with flexible living areas and excellent natural light throughout. Located in Raleigh, this 5-bedroom home offers walkable neighborhood and coffee shops nearby.",
+    "features": [
+      "walkable neighborhood",
+      "coffee shops nearby",
+      "bike friendly",
+      "pet friendly"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=7-3"
+  },
+  {
+    "citySlug": "raleigh-nc",
+    "address": "1968 Birch Boulevard, Raleigh, NC",
+    "price": 704000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2320,
+    "description": "Ideal for remote work with a dedicated office nook and strong neighborhood amenities. Located in Raleigh, this 2-bedroom home offers pool and covered patio.",
+    "features": [
+      "pool",
+      "covered patio",
+      "mountain views",
+      "smart home"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=7-4"
+  },
+  {
+    "citySlug": "raleigh-nc",
+    "address": "1985 Pine Place, Raleigh, NC",
+    "price": 739000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2850,
+    "description": "Family-oriented home close to trails, playgrounds, and highly rated schools. Located in Raleigh, this 3-bedroom home offers top-rated schools and cul-de-sac.",
+    "features": [
+      "top-rated schools",
+      "cul-de-sac",
+      "large yard",
+      "storage shed"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=7-5"
+  },
+  {
+    "citySlug": "raleigh-nc",
+    "address": "2002 Elm Street, Raleigh, NC",
+    "price": 774000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 3380,
+    "description": "Stylish urban retreat with premium finishes and low-maintenance living. Located in Raleigh, this 4-bedroom home offers water view and balcony.",
+    "features": [
+      "water view",
+      "balcony",
+      "concierge",
+      "gym access"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=7-6"
+  },
+  {
+    "citySlug": "raleigh-nc",
+    "address": "2019 Summit Avenue, Raleigh, NC",
+    "price": 809000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3910,
+    "description": "Resort-style outdoor living with space to relax, dine, and host friends. Located in Raleigh, this 5-bedroom home offers solar panels and drought tolerant landscaping.",
+    "features": [
+      "solar panels",
+      "drought tolerant landscaping",
+      "desert modern",
+      "guest casita"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=7-7"
+  },
+  {
+    "citySlug": "raleigh-nc",
+    "address": "2036 River Road, Raleigh, NC",
+    "price": 844000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 2640,
+    "description": "Energy-efficient upgrades and smart storage make daily life effortless. Located in Raleigh, this 2-bedroom home offers craftsman details and fireplace.",
+    "features": [
+      "craftsman details",
+      "fireplace",
+      "garden beds",
+      "ADU potential"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=7-8"
+  },
+  {
+    "citySlug": "raleigh-nc",
+    "address": "2053 Park Circle, Raleigh, NC",
+    "price": 879000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 3170,
+    "description": "Charming curb appeal and a functional layout in a desirable location. Located in Raleigh, this 3-bedroom home offers renovated baths and quartz counters.",
+    "features": [
+      "renovated baths",
+      "quartz counters",
+      "primary suite",
+      "walk-in closet"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&sig=7-9"
+  }
+]
