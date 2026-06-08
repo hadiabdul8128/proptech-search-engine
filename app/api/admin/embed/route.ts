@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import { createAdminClient } from "@/lib/supabase/admin";
-import { embedText } from "@/lib/search/embed";
-import { buildEmbeddingText } from "@/lib/search/parse-query";
+import { listPropertyIds } from "@/lib/jobs/embed-property";
+import { enqueueEmbedProperty, enqueueReindexAll } from "@/lib/queue/producers";
 
 export async function POST(request: Request) {
   try {
@@ -12,49 +11,31 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    if (!process.env.REDIS_URL) {
+      return NextResponse.json(
+        { error: "REDIS_URL is not configured. Start Redis and the worker service." },
+        { status: 503 }
+      );
+    }
+
     const body = await request.json().catch(() => ({}));
     const propertyId = body.propertyId as string | undefined;
 
-    const supabase = createAdminClient();
-    let query = supabase
-      .from("properties")
-      .select("id, address, price, beds, baths, description, features, cities(name, state)");
-
     if (propertyId) {
-      query = query.eq("id", propertyId);
+      const jobId = await enqueueEmbedProperty(propertyId);
+      return NextResponse.json({ ok: true, enqueued: 1, jobIds: [jobId] });
     }
 
-    const { data: properties, error } = await query;
-    if (error) throw new Error(error.message);
-
-    let updated = 0;
-    for (const property of properties ?? []) {
-      const cities = property.cities as { name: string; state: string } | { name: string; state: string }[] | null;
-      const city = Array.isArray(cities) ? cities[0] : cities;
-      const text = buildEmbeddingText({
-        description: property.description,
-        features: (property.features as string[]) ?? [],
-        address: property.address,
-        price: property.price,
-        beds: property.beds,
-        baths: Number(property.baths),
-        cityName: city?.name,
-        state: city?.state,
-      });
-      const embedding = await embedText(text);
-
-      const { error: updateError } = await supabase
-        .from("properties")
-        .update({ embedding })
-        .eq("id", property.id);
-
-      if (updateError) throw new Error(updateError.message);
-      updated += 1;
-    }
-
-    return NextResponse.json({ ok: true, updated });
+    const propertyIds = await listPropertyIds();
+    const jobId = await enqueueReindexAll();
+    return NextResponse.json({
+      ok: true,
+      enqueued: propertyIds.length,
+      jobIds: [jobId],
+      mode: "reindex-all",
+    });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Embed failed";
+    const message = error instanceof Error ? error.message : "Embed enqueue failed";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

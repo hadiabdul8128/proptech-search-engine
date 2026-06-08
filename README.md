@@ -7,6 +7,8 @@ AI-powered real estate search platform with semantic property matching, SEO city
 - Next.js App Router
 - Supabase (Postgres + pgvector + Auth)
 - OpenAI embeddings (`text-embedding-3-small`)
+- Redis (search/embed cache + rate limits)
+- BullMQ worker (background embeds + lead processing)
 - Tailwind CSS
 
 ## Features
@@ -56,10 +58,23 @@ where email = 'your-email@example.com'
 on conflict (user_id) do update set role = excluded.role;
 ```
 
-7. Start the dev server:
+7. Start Redis, the worker, and the dev server:
 
 ```bash
+# terminal 1
+docker run --name proptech-redis -p 6379:6379 redis:7-alpine
+
+# terminal 2
+npm run worker:dev
+
+# terminal 3
 npm run dev
+```
+
+Or run all three services in Docker:
+
+```bash
+docker compose -f docker-compose.dev.yml --env-file .env.local up --build
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
@@ -69,8 +84,10 @@ Open [http://localhost:3000](http://localhost:3000).
 - `npm run dev` — start Next.js locally
 - `npm run build` — production build
 - `npm run seed` — generate mock listings, embeddings, and demo agents
-- `npm run docker:up` — build and run production container
-- `npm run docker:dev` — run dev server in Docker with hot reload
+- `npm run worker` — start BullMQ worker
+- `npm run worker:dev` — start worker with reload
+- `npm run docker:up` — build and run production stack (`app` + `worker` + `redis`)
+- `npm run docker:dev` — run dev stack with hot reload
 
 ## Docker
 
@@ -84,6 +101,14 @@ cp .env.example .env.local
 
 docker compose --env-file .env.local up --build
 ```
+
+This starts three services:
+
+| Service | Port | Purpose |
+|---|---|---|
+| `app` | 3000 | Next.js web + API |
+| `worker` | 8081 health | BullMQ background jobs |
+| `redis` | 6379 | Cache + queues |
 
 App: [http://localhost:3000](http://localhost:3000)
 
@@ -118,6 +143,22 @@ docker compose -f docker-compose.dev.yml up --build
 | `APP_PORT` | optional | host port (default `3000`) |
 
 For production deploys, set `NEXT_PUBLIC_SITE_URL` to your public domain before `docker compose build`.
+
+### Async pipeline
+
+- **Search cache:** repeat queries hit Redis first (`X-Cache: HIT|MISS` response header)
+- **Embed jobs:** `POST /api/admin/embed` enqueues BullMQ jobs instead of blocking
+- **Lead jobs:** lead insert triggers background post-processing
+- **Queue stats:** `GET /api/admin/queues` with `Authorization: Bearer $ADMIN_EMBED_TOKEN`
+
+Required env vars:
+
+```env
+REDIS_URL=redis://redis:6379
+SEARCH_CACHE_TTL_SECONDS=600
+EMBED_CACHE_TTL_SECONDS=86400
+WORKER_HEALTH_PORT=8081
+```
 
 ### Docker Hub (pre-built image)
 

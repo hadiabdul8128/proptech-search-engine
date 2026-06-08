@@ -1,7 +1,24 @@
 import { createAdminClient } from "@/lib/supabase/admin";
+import {
+  buildEmbedCacheKey,
+  buildSearchCacheKey,
+  getCachedJson,
+  getEmbedCacheTtl,
+  getSearchCacheTtl,
+  setCachedJson,
+} from "@/lib/redis/cache";
 import { embedText } from "@/lib/search/embed";
 import { parseSearchQuery } from "@/lib/search/parse-query";
 import type { SearchResult } from "@/lib/types";
+
+type CachedSearchPayload = {
+  results: SearchResult[];
+  parsed: ReturnType<typeof parseSearchQuery>;
+};
+
+export type SearchResponse = CachedSearchPayload & {
+  cache: "HIT" | "MISS";
+};
 
 function computeFilterScore(
   property: {
@@ -32,17 +49,26 @@ function computeFilterScore(
 
   if (parsed.keywords.length > 0) {
     checks++;
-    const haystack = [
-      property.description,
-      ...property.features,
-    ]
-      .join(" ")
-      .toLowerCase();
+    const haystack = [property.description, ...property.features].join(" ").toLowerCase();
     const hits = parsed.keywords.filter((k) => haystack.includes(k)).length;
     score += hits / parsed.keywords.length;
   }
 
   return checks === 0 ? 1 : score / checks;
+}
+
+async function getEmbeddingForQuery(query: string): Promise<number[]> {
+  const normalized = query.trim().toLowerCase() || "family home with backyard";
+  const embedKey = buildEmbedCacheKey(normalized);
+
+  const cachedEmbedding = await getCachedJson<number[]>(embedKey);
+  if (cachedEmbedding) {
+    return cachedEmbedding;
+  }
+
+  const embedding = await embedText(normalized);
+  await setCachedJson(embedKey, embedding, getEmbedCacheTtl());
+  return embedding;
 }
 
 export async function searchProperties(
@@ -54,7 +80,7 @@ export async function searchProperties(
     minBeds?: number | null;
     limit?: number;
   }
-): Promise<{ results: SearchResult[]; parsed: ReturnType<typeof parseSearchQuery> }> {
+): Promise<SearchResponse> {
   const parsed = parseSearchQuery(query);
   const citySlug = options?.citySlug ?? parsed.citySlug;
   const maxPrice = options?.maxPrice ?? parsed.maxPrice;
@@ -62,8 +88,23 @@ export async function searchProperties(
   const minBeds = options?.minBeds ?? parsed.minBeds;
   const limit = options?.limit ?? 24;
 
+  const normalizedParsed = { ...parsed, citySlug, maxPrice, minPrice, minBeds };
+  const searchKey = buildSearchCacheKey({
+    query: query.trim().toLowerCase() || "family home with backyard",
+    citySlug,
+    maxPrice,
+    minPrice,
+    minBeds,
+    limit,
+  });
+
+  const cachedSearch = await getCachedJson<CachedSearchPayload>(searchKey);
+  if (cachedSearch) {
+    return { ...cachedSearch, cache: "HIT" };
+  }
+
   const supabase = createAdminClient();
-  const embedding = await embedText(query || "family home with backyard");
+  const embedding = await getEmbeddingForQuery(query);
 
   const { data, error } = await supabase.rpc("match_properties", {
     query_embedding: embedding,
@@ -104,7 +145,7 @@ export async function searchProperties(
           features: row.features ?? [],
           description: row.description,
         },
-        { ...parsed, maxPrice, minPrice, minBeds }
+        normalizedParsed
       );
       const matchScore = semanticScore * 0.7 + filterScore * 0.3;
 
@@ -139,5 +180,12 @@ export async function searchProperties(
 
   results.sort((a, b) => b.match_score - a.match_score);
 
-  return { results, parsed: { ...parsed, citySlug, maxPrice, minPrice, minBeds } };
+  const payload: CachedSearchPayload = {
+    results,
+    parsed: normalizedParsed,
+  };
+
+  await setCachedJson(searchKey, payload, getSearchCacheTtl());
+
+  return { ...payload, cache: "MISS" };
 }

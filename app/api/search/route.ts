@@ -16,7 +16,7 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const parsed = searchSchema.parse(Object.fromEntries(searchParams.entries()));
 
-    const { results, parsed: queryMeta } = await searchProperties(parsed.q ?? "", {
+    const { results, parsed: queryMeta, cache } = await searchProperties(parsed.q ?? "", {
       citySlug: parsed.city || null,
       maxPrice: parsed.maxPrice ?? null,
       minPrice: parsed.minPrice ?? null,
@@ -24,7 +24,10 @@ export async function GET(request: Request) {
       limit: parsed.limit ?? 24,
     });
 
-    return NextResponse.json({ results, parsed: queryMeta });
+    return NextResponse.json(
+      { results, parsed: queryMeta },
+      { headers: { "X-Cache": cache } }
+    );
   } catch (error) {
     const message = error instanceof Error ? error.message : "Search failed";
     return NextResponse.json({ error: message }, { status: 500 });

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { enqueueLeadPostCreate } from "@/lib/queue/producers";
+import { isLeadRateLimited } from "@/lib/redis/rate-limit";
 import { assignLeadAgent } from "@/lib/routing/assign-lead";
 
 const leadSchema = z.object({
@@ -13,14 +15,14 @@ const leadSchema = z.object({
   source: z.string().default("website"),
 });
 
-const rateLimit = new Map<string, { count: number; resetAt: number }>();
+const fallbackRateLimit = new Map<string, { count: number; resetAt: number }>();
 
-function isRateLimited(ip: string): boolean {
+function isFallbackRateLimited(ip: string): boolean {
   const now = Date.now();
-  const entry = rateLimit.get(ip);
+  const entry = fallbackRateLimit.get(ip);
 
   if (!entry || entry.resetAt < now) {
-    rateLimit.set(ip, { count: 1, resetAt: now + 60_000 });
+    fallbackRateLimit.set(ip, { count: 1, resetAt: now + 60_000 });
     return false;
   }
 
@@ -30,8 +32,12 @@ function isRateLimited(ip: string): boolean {
 
 export async function POST(request: Request) {
   try {
-    const ip = request.headers.get("x-forwarded-for") ?? "local";
-    if (isRateLimited(ip)) {
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
+    const limited = process.env.REDIS_URL
+      ? await isLeadRateLimited(ip)
+      : isFallbackRateLimited(ip);
+
+    if (limited) {
       return NextResponse.json({ error: "Too many requests." }, { status: 429 });
     }
 
@@ -63,7 +69,12 @@ export async function POST(request: Request) {
       throw new Error(error.message);
     }
 
-    return NextResponse.json({ ok: true, lead });
+    let queuedJobId: string | undefined;
+    if (process.env.REDIS_URL) {
+      queuedJobId = await enqueueLeadPostCreate(lead.id);
+    }
+
+    return NextResponse.json({ ok: true, lead, queuedJobId });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unable to create lead";
     return NextResponse.json({ error: message }, { status: 400 });

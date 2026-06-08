@@ -43,3 +43,9 @@ CMD ["node", "server.js"]
 FROM deps AS seed
 COPY . .
 CMD ["npm", "run", "seed"]
+
+FROM deps AS worker
+COPY . .
+EXPOSE 8081
+ENV WORKER_HEALTH_PORT=8081
+CMD ["npm", "run", "worker"]

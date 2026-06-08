@@ -11,7 +11,9 @@
     "docker:up": "docker compose --env-file .env.local up --build",
     "docker:down": "docker compose down",
     "docker:dev": "docker compose -f docker-compose.dev.yml up --build",
-    "docker:seed": "docker compose --env-file .env.local --profile seed run --rm seed"
+    "docker:seed": "docker compose --env-file .env.local --profile seed run --rm seed",
+    "worker": "tsx services/worker/index.ts",
+    "worker:dev": "tsx watch services/worker/index.ts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.16",
@@ -22,8 +24,10 @@
     "@radix-ui/react-tabs": "^1.1.14",
     "@supabase/ssr": "^0.10.3",
     "@supabase/supabase-js": "^2.107.0",
+    "bullmq": "^5.78.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "ioredis": "^5.11.1",
     "lucide-react": "^1.17.0",
     "next": "16.2.7",
     "openai": "^6.42.0",
