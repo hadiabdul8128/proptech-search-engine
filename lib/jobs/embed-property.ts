@@ -2,11 +2,12 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { embedText } from "@/lib/search/embed";
 import { buildEmbeddingText } from "@/lib/search/parse-query";
 
-export async function embedPropertyById(propertyId: string): Promise<void> {
+export async function embedPropertyById(organizationId: string, propertyId: string): Promise<void> {
   const supabase = createAdminClient();
   const { data: property, error } = await supabase
     .from("properties")
-    .select("id, address, price, beds, baths, description, features, cities(name, state)")
+    .select("id, organization_id, address, price, beds, baths, description, features, cities(name, state)")
+    .eq("organization_id", organizationId)
     .eq("id", propertyId)
     .single();
 
@@ -36,6 +37,7 @@ export async function embedPropertyById(propertyId: string): Promise<void> {
   const { error: updateError } = await supabase
     .from("properties")
     .update({ embedding })
+    .eq("organization_id", organizationId)
     .eq("id", property.id);
 
   if (updateError) {
@@ -43,9 +45,9 @@ export async function embedPropertyById(propertyId: string): Promise<void> {
   }
 }
 
-export async function listPropertyIds(propertyId?: string): Promise<string[]> {
+export async function listPropertyIds(organizationId: string, propertyId?: string): Promise<string[]> {
   const supabase = createAdminClient();
-  let query = supabase.from("properties").select("id");
+  let query = supabase.from("properties").select("id").eq("organization_id", organizationId);
 
   if (propertyId) {
     query = query.eq("id", propertyId);

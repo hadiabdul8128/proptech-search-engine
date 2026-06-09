@@ -9,6 +9,7 @@ import {
 } from "@/lib/redis/cache";
 import { embedText } from "@/lib/search/embed";
 import { parseSearchQuery } from "@/lib/search/parse-query";
+import { getDefaultOrganization } from "@/lib/tenant/context";
 import type { SearchResult } from "@/lib/types";
 
 type CachedSearchPayload = {
@@ -57,9 +58,9 @@ function computeFilterScore(
   return checks === 0 ? 1 : score / checks;
 }
 
-async function getEmbeddingForQuery(query: string): Promise<number[]> {
+async function getEmbeddingForQuery(organizationId: string, query: string): Promise<number[]> {
   const normalized = query.trim().toLowerCase() || "family home with backyard";
-  const embedKey = buildEmbedCacheKey(normalized);
+  const embedKey = buildEmbedCacheKey(organizationId, normalized);
 
   const cachedEmbedding = await getCachedJson<number[]>(embedKey);
   if (cachedEmbedding) {
@@ -74,6 +75,7 @@ async function getEmbeddingForQuery(query: string): Promise<number[]> {
 export async function searchProperties(
   query: string,
   options?: {
+    organizationId?: string;
     citySlug?: string | null;
     maxPrice?: number | null;
     minPrice?: number | null;
@@ -81,6 +83,7 @@ export async function searchProperties(
     limit?: number;
   }
 ): Promise<SearchResponse> {
+  const organizationId = options?.organizationId ?? (await getDefaultOrganization()).organizationId;
   const parsed = parseSearchQuery(query);
   const citySlug = options?.citySlug ?? parsed.citySlug;
   const maxPrice = options?.maxPrice ?? parsed.maxPrice;
@@ -90,6 +93,7 @@ export async function searchProperties(
 
   const normalizedParsed = { ...parsed, citySlug, maxPrice, minPrice, minBeds };
   const searchKey = buildSearchCacheKey({
+    organizationId,
     query: query.trim().toLowerCase() || "family home with backyard",
     citySlug,
     maxPrice,
@@ -104,7 +108,7 @@ export async function searchProperties(
   }
 
   const supabase = createAdminClient();
-  const embedding = await getEmbeddingForQuery(query);
+  const embedding = await getEmbeddingForQuery(organizationId, query);
 
   const { data, error } = await supabase.rpc("match_properties", {
     query_embedding: embedding,
@@ -113,6 +117,7 @@ export async function searchProperties(
     filter_max_price: maxPrice,
     filter_min_price: minPrice,
     filter_min_beds: minBeds,
+    filter_organization_id: organizationId,
   });
 
   if (error) {
@@ -122,6 +127,7 @@ export async function searchProperties(
   const results: SearchResult[] = (data ?? []).map(
     (row: {
       id: string;
+      organization_id: string;
       city_id: string;
       address: string;
       price: number;
@@ -151,6 +157,7 @@ export async function searchProperties(
 
       return {
         id: row.id,
+        organization_id: row.organization_id,
         city_id: row.city_id,
         address: row.address,
         price: row.price,
@@ -166,6 +173,7 @@ export async function searchProperties(
         filter_score: filterScore,
         cities: {
           id: row.city_id,
+          organization_id: organizationId,
           slug: row.city_slug,
           name: row.city_name,
           state: row.city_state,

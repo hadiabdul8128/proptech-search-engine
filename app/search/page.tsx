@@ -27,30 +27,15 @@ async function SearchResults({
   minPrice?: string;
   minBeds?: string;
 }) {
+  let searchData: Awaited<ReturnType<typeof searchProperties>>;
+
   try {
-    const { results } = await searchProperties(query || "family home", {
+    searchData = await searchProperties(query || "family home", {
       citySlug: city || null,
       maxPrice: maxPrice ? Number(maxPrice) : null,
       minPrice: minPrice ? Number(minPrice) : null,
       minBeds: minBeds ? Number(minBeds) : null,
     });
-
-    if (results.length === 0) {
-      return (
-        <div className="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center">
-          <p className="font-medium text-slate-900">No matches found</p>
-          <p className="mt-2 text-sm text-slate-500">Try broadening your search or removing filters.</p>
-        </div>
-      );
-    }
-
-    return (
-      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-        {results.map((property) => (
-          <PropertyCard key={property.id} property={property} showMatch />
-        ))}
-      </div>
-    );
   } catch (error) {
     return (
       <div className="rounded-xl border border-red-200 bg-red-50 p-6 text-red-800">
@@ -61,6 +46,23 @@ async function SearchResults({
       </div>
     );
   }
+
+  if (searchData.results.length === 0) {
+    return (
+      <div className="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center">
+        <p className="font-medium text-slate-900">No matches found</p>
+        <p className="mt-2 text-sm text-slate-500">Try broadening your search or removing filters.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      {searchData.results.map((property) => (
+        <PropertyCard key={property.id} property={property} showMatch />
+      ))}
+    </div>
+  );
 }
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {

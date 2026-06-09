@@ -120,6 +120,24 @@ async function main() {
   });
   const openai = new OpenAI({ apiKey: openaiKey });
 
+  console.log("Upserting organizations...");
+  const organizations = [
+    { slug: "nestify", name: "Nestify" },
+    { slug: "compass-demo", name: "Compass Demo" },
+    { slug: "nj-realty-group", name: "NJ Realty Group" },
+  ];
+  const { data: organizationRows, error: organizationError } = await supabase
+    .from("organizations")
+    .upsert(organizations, { onConflict: "slug" })
+    .select("id, slug, name");
+
+  if (organizationError) throw organizationError;
+
+  const nestifyOrg = organizationRows?.find((org) => org.slug === "nestify");
+  if (!nestifyOrg) {
+    throw new Error("Nestify organization was not created.");
+  }
+
   const citiesPath = join(process.cwd(), "supabase/seed/cities.json");
   const cities: CitySeed[] = JSON.parse(readFileSync(citiesPath, "utf-8"));
 
@@ -135,7 +153,10 @@ async function main() {
   console.log("Upserting cities...");
   const { data: cityRows, error: cityError } = await supabase
     .from("cities")
-    .upsert(cities, { onConflict: "slug" })
+    .upsert(
+      cities.map((city) => ({ ...city, organization_id: nestifyOrg.id })),
+      { onConflict: "slug" }
+    )
     .select("id, slug, name, state");
 
   if (cityError) throw cityError;
@@ -172,6 +193,7 @@ async function main() {
       const city = cityMap.get(property.citySlug)!;
       return {
         city_id: city.id,
+        organization_id: nestifyOrg.id,
         address: property.address,
         price: property.price,
         beds: property.beds,
@@ -193,6 +215,7 @@ async function main() {
   console.log("Upserting demo agents...");
   const agentRows = [
     {
+      organization_id: nestifyOrg.id,
       name: "Jordan Ellis",
       email: "jordan@aihomesearch.demo",
       phone: "512-555-0101",
@@ -200,6 +223,7 @@ async function main() {
       is_active: true,
     },
     {
+      organization_id: nestifyOrg.id,
       name: "Morgan Lee",
       email: "morgan@aihomesearch.demo",
       phone: "303-555-0102",
@@ -207,6 +231,7 @@ async function main() {
       is_active: true,
     },
     {
+      organization_id: nestifyOrg.id,
       name: "Casey Rivera",
       email: "casey@aihomesearch.demo",
       phone: "206-555-0103",
@@ -214,6 +239,7 @@ async function main() {
       is_active: true,
     },
     {
+      organization_id: nestifyOrg.id,
       name: "Taylor Brooks",
       email: "taylor@aihomesearch.demo",
       phone: "305-555-0104",
@@ -226,6 +252,23 @@ async function main() {
     .from("agents")
     .upsert(agentRows, { onConflict: "email" });
   if (agentError) throw agentError;
+
+  console.log("Linking demo admin membership if user exists...");
+  const { data: adminUsers, error: adminUserError } = await supabase.auth.admin.listUsers();
+  if (adminUserError) throw adminUserError;
+
+  const adminUser = adminUsers.users.find((user) => user.email === "hadiabdul8128@gmail.com");
+  if (adminUser) {
+    const { error: memberError } = await supabase.from("organization_members").upsert(
+      {
+        organization_id: nestifyOrg.id,
+        user_id: adminUser.id,
+        role: "admin",
+      },
+      { onConflict: "organization_id,user_id" }
+    );
+    if (memberError) throw memberError;
+  }
 
   console.log("Seed complete.");
 }

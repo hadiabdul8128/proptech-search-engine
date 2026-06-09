@@ -11,18 +11,25 @@ export const JOBS = {
   INVALIDATE_SEARCH_CACHE: "invalidate-search-cache",
 } as const;
 
-export type EmbedOneJobData = {
+export type BaseJobData = {
+  organizationId: string;
+  jobType: string;
+  resourceId?: string;
+  requestedBy?: string;
+};
+
+export type EmbedOneJobData = BaseJobData & {
   propertyId: string;
 };
 
-export type ReindexAllJobData = {
+export type ReindexAllJobData = BaseJobData & {
   propertyId?: string;
 };
 
-export type LeadPostCreateJobData = {
+export type LeadPostCreateJobData = BaseJobData & {
   leadId: string;
 };
 
-export type InvalidateSearchCacheJobData = {
+export type InvalidateSearchCacheJobData = BaseJobData & {
   reason?: string;
 };

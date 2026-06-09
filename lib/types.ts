@@ -1,5 +1,6 @@
 export type City = {
   id: string;
+  organization_id: string;
   slug: string;
   name: string;
   state: string;
@@ -11,6 +12,7 @@ export type City = {
 
 export type Property = {
   id: string;
+  organization_id: string;
   city_id: string;
   address: string;
   price: number;
@@ -26,6 +28,7 @@ export type Property = {
 
 export type Agent = {
   id: string;
+  organization_id: string;
   user_id: string | null;
   name: string;
   email: string;
@@ -36,8 +39,11 @@ export type Agent = {
 
 export type LeadStatus = "new" | "contacted" | "closed";
 
+export type OrganizationRole = "admin" | "agent" | "analyst" | "viewer";
+
 export type Lead = {
   id: string;
+  organization_id: string;
   name: string;
   email: string;
   phone: string | null;

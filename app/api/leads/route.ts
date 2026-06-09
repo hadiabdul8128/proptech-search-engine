@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { logAuditEvent } from "@/lib/audit/log";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { enqueueLeadPostCreate } from "@/lib/queue/producers";
 import { isLeadRateLimited } from "@/lib/redis/rate-limit";
 import { assignLeadAgent } from "@/lib/routing/assign-lead";
+import { getDefaultOrganization } from "@/lib/tenant/context";
 
 const leadSchema = z.object({
   name: z.string().min(2),
@@ -33,8 +35,9 @@ function isFallbackRateLimited(ip: string): boolean {
 export async function POST(request: Request) {
   try {
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
+    const { organizationId } = await getDefaultOrganization();
     const limited = process.env.REDIS_URL
-      ? await isLeadRateLimited(ip)
+      ? await isLeadRateLimited(organizationId, ip)
       : isFallbackRateLimited(ip);
 
     if (limited) {
@@ -44,6 +47,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const data = leadSchema.parse(body);
     const assignedAgentId = await assignLeadAgent({
+      organizationId,
       propertyId: data.propertyId,
       citySlug: data.citySlug,
     });
@@ -52,6 +56,7 @@ export async function POST(request: Request) {
     const { data: lead, error } = await supabase
       .from("leads")
       .insert({
+        organization_id: organizationId,
         name: data.name,
         email: data.email,
         phone: data.phone ?? null,
@@ -71,8 +76,22 @@ export async function POST(request: Request) {
 
     let queuedJobId: string | undefined;
     if (process.env.REDIS_URL) {
-      queuedJobId = await enqueueLeadPostCreate(lead.id);
+      queuedJobId = await enqueueLeadPostCreate({ organizationId, leadId: lead.id });
     }
+
+    await logAuditEvent({
+      organizationId,
+      action: "lead.created",
+      objectType: "lead",
+      objectId: lead.id,
+      metadata: {
+        source: data.source,
+        citySlug: data.citySlug ?? null,
+        propertyId: data.propertyId ?? null,
+        assignedAgentId,
+        queuedJobId: queuedJobId ?? null,
+      },
+    });
 
     return NextResponse.json({ ok: true, lead, queuedJobId });
   } catch (error) {

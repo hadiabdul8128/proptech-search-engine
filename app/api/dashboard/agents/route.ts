@@ -1,24 +1,27 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { logAuditEvent } from "@/lib/audit/log";
+import { hasPermission } from "@/lib/auth/permissions";
 import { createClient } from "@/lib/supabase/server";
-import { getUserRole } from "@/lib/auth/session";
+import { requireAgentUser } from "@/lib/auth/session";
 
 export async function GET() {
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { user, role, organizationId } = await requireAgentUser();
 
-  if (!user) {
+  if (!user || !role || !organizationId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const role = await getUserRole(user.id);
-  if (role !== "admin") {
+  if (!hasPermission(role, "manage_agents")) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
-  const { data: agents, error } = await supabase.from("agents").select("*").order("name");
+  const { data: agents, error } = await supabase
+    .from("agents")
+    .select("*")
+    .eq("organization_id", organizationId)
+    .order("name");
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -35,16 +38,13 @@ const agentSchema = z.object({
 
 export async function POST(request: Request) {
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { user, role, organizationId } = await requireAgentUser();
 
-  if (!user) {
+  if (!user || !role || !organizationId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const role = await getUserRole(user.id);
-  if (role !== "admin") {
+  if (!hasPermission(role, "manage_agents")) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
@@ -55,6 +55,7 @@ export async function POST(request: Request) {
     .from("agents")
     .upsert(
       {
+        organization_id: organizationId,
         name: data.name,
         email: data.email,
         phone: data.phone ?? null,
@@ -69,6 +70,16 @@ export async function POST(request: Request) {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
+
+  await logAuditEvent({
+    organizationId,
+    actorUserId: user.id,
+    actorRole: role,
+    action: "agent.created",
+    objectType: "agent",
+    objectId: agent.id,
+    metadata: { email: agent.email, territories: agent.territories ?? [] },
+  });
 
   return NextResponse.json({ agent });
 }

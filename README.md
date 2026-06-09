@@ -9,6 +9,7 @@ AI-powered real estate search platform with semantic property matching, SEO city
 - OpenAI embeddings (`text-embedding-3-small`)
 - Redis (search/embed cache + rate limits)
 - BullMQ worker (background embeds + lead processing)
+- Multi-tenant organizations with role-based permissions and audit logs
 - Tailwind CSS
 
 ## Features
@@ -18,6 +19,7 @@ AI-powered real estate search platform with semantic property matching, SEO city
 - Property detail pages with lead capture
 - Automatic lead routing by territory and round-robin fallback
 - Agent dashboard for lead inbox and admin agent management
+- Organization-scoped listings, leads, agents, Redis keys, BullMQ jobs, and audit events
 
 ## Local setup
 
@@ -38,6 +40,7 @@ cp .env.example .env.local
 4. Run the migration in Supabase SQL editor:
 
 - [`supabase/migrations/001_init.sql`](supabase/migrations/001_init.sql)
+- [`supabase/migrations/002_multi_tenant_rbac_audit.sql`](supabase/migrations/002_multi_tenant_rbac_audit.sql)
 
 5. Seed cities, mock listings, embeddings, and demo agents:
 
@@ -48,14 +51,28 @@ npm run seed
 6. Create an agent user:
 
 - Sign up at `/login`
-- In Supabase SQL editor, grant access:
+- In Supabase SQL editor, grant organization access:
 
 ```sql
-insert into public.agent_roles (user_id, role)
-select id, 'admin'
-from auth.users
+insert into public.organization_members (organization_id, user_id, role)
+select o.id, u.id, 'admin'
+from auth.users u
+cross join public.organizations o
+where u.email = 'your-email@example.com'
+  and o.slug = 'nestify'
+on conflict (organization_id, user_id) do update set role = excluded.role;
+```
+
+Roles are `admin`, `agent`, `analyst`, and `viewer`. The seed script also links `hadiabdul8128@gmail.com` to `Nestify` as `admin` when that Supabase user exists.
+
+If you still have legacy rows, the multi-tenant migration copies `agent_roles` into `organization_members` for `Nestify`.
+
+To confirm a user email manually in development:
+
+```sql
+update auth.users
+set email_confirmed_at = coalesce(email_confirmed_at, now())
 where email = 'your-email@example.com'
-on conflict (user_id) do update set role = excluded.role;
 ```
 
 7. Start Redis, the worker, and the dev server:
@@ -150,6 +167,8 @@ For production deploys, set `NEXT_PUBLIC_SITE_URL` to your public domain before 
 - **Embed jobs:** `POST /api/admin/embed` enqueues BullMQ jobs instead of blocking
 - **Lead jobs:** lead insert triggers background post-processing
 - **Queue stats:** `GET /api/admin/queues` with `Authorization: Bearer $ADMIN_EMBED_TOKEN`
+- **Tenant safety:** Redis keys use `org:{organizationId}:...`, and BullMQ payloads include `organizationId`, `jobType`, `resourceId`, and `requestedBy`.
+- **Audit logs:** key search, lead, agent, cache, and worker events are written to `audit_logs`.
 
 Required env vars:
 

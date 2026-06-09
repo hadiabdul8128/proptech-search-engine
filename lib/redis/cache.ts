@@ -13,11 +13,12 @@ export function getEmbedCacheTtl(): number {
   return Number(process.env.EMBED_CACHE_TTL_SECONDS ?? 86400);
 }
 
-export function buildEmbedCacheKey(normalizedQuery: string): string {
-  return `embed:v1:${hashKey(normalizedQuery.trim().toLowerCase())}`;
+export function buildEmbedCacheKey(organizationId: string, normalizedQuery: string): string {
+  return `org:${organizationId}:embed:v1:${hashKey(normalizedQuery.trim().toLowerCase())}`;
 }
 
 export function buildSearchCacheKey(payload: {
+  organizationId: string;
   query: string;
   citySlug: string | null;
   maxPrice: number | null;
@@ -26,7 +27,7 @@ export function buildSearchCacheKey(payload: {
   limit: number;
 }): string {
   const raw = JSON.stringify(payload);
-  return `search:v1:${hashKey(raw)}`;
+  return `org:${payload.organizationId}:search:v1:${hashKey(raw)}`;
 }
 
 export async function getCachedJson<T>(key: string): Promise<T | null> {
@@ -57,7 +58,7 @@ export async function setCachedJson(
   }
 }
 
-export async function invalidateSearchCache(): Promise<number> {
+export async function invalidateSearchCache(organizationId: string): Promise<number> {
   const client = getRedis();
   if (!client) return 0;
 
@@ -68,7 +69,7 @@ export async function invalidateSearchCache(): Promise<number> {
     const [nextCursor, keys] = await client.scan(
       cursor,
       "MATCH",
-      "search:v1:*",
+      `org:${organizationId}:search:v1:*`,
       "COUNT",
       100
     );

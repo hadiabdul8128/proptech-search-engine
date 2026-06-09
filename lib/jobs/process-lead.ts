@@ -1,10 +1,11 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 
-export async function processLeadPostCreate(leadId: string): Promise<void> {
+export async function processLeadPostCreate(organizationId: string, leadId: string): Promise<void> {
   const supabase = createAdminClient();
   const { data: lead, error } = await supabase
     .from("leads")
-    .select("id, name, email, assigned_agent_id, agents(name, email)")
+    .select("id, organization_id, name, email, assigned_agent_id, agents(name, email)")
+    .eq("organization_id", organizationId)
     .eq("id", leadId)
     .single();
 

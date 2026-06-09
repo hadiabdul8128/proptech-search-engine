@@ -33,7 +33,13 @@ export default function DashboardAgentsPage() {
   }
 
   useEffect(() => {
-    loadAgents();
+    async function loadInitialAgents() {
+      const response = await fetch("/api/dashboard/agents");
+      const body = await response.json();
+      if (response.ok) setAgents(body.agents ?? []);
+    }
+
+    void loadInitialAgents();
   }, []);
 
   async function createAgent(event: React.FormEvent) {

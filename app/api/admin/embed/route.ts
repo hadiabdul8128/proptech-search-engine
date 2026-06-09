@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { listPropertyIds } from "@/lib/jobs/embed-property";
 import { enqueueEmbedProperty, enqueueReindexAll } from "@/lib/queue/producers";
+import { getDefaultOrganization } from "@/lib/tenant/context";
 
 export async function POST(request: Request) {
   try {
@@ -20,14 +21,15 @@ export async function POST(request: Request) {
 
     const body = await request.json().catch(() => ({}));
     const propertyId = body.propertyId as string | undefined;
+    const { organizationId } = await getDefaultOrganization();
 
     if (propertyId) {
-      const jobId = await enqueueEmbedProperty(propertyId);
+      const jobId = await enqueueEmbedProperty({ organizationId, propertyId });
       return NextResponse.json({ ok: true, enqueued: 1, jobIds: [jobId] });
     }
 
-    const propertyIds = await listPropertyIds();
-    const jobId = await enqueueReindexAll();
+    const propertyIds = await listPropertyIds(organizationId);
+    const jobId = await enqueueReindexAll({ organizationId });
     return NextResponse.json({
       ok: true,
       enqueued: propertyIds.length,

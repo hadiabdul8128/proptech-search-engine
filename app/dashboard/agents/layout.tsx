@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { hasPermission } from "@/lib/auth/permissions";
 import { requireAgentUser } from "@/lib/auth/session";
 
 export default async function AgentsSectionLayout({
@@ -8,7 +9,7 @@ export default async function AgentsSectionLayout({
 }) {
   const { role } = await requireAgentUser();
 
-  if (role !== "admin") {
+  if (!hasPermission(role, "manage_agents")) {
     redirect("/dashboard/leads");
   }
 

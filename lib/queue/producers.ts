@@ -43,40 +43,83 @@ function getMaintenanceQueue() {
   return maintenanceQueue;
 }
 
-export async function enqueueEmbedProperty(propertyId: string) {
+export async function enqueueEmbedProperty(input: {
+  organizationId: string;
+  propertyId: string;
+  requestedBy?: string;
+}) {
   const queue = getPropertyEmbedQueue();
-  const job = await queue.add(JOBS.EMBED_ONE, { propertyId } satisfies EmbedOneJobData, {
-    jobId: `embed-one:${propertyId}`,
+  const job = await queue.add(JOBS.EMBED_ONE, {
+    organizationId: input.organizationId,
+    jobType: JOBS.EMBED_ONE,
+    resourceId: input.propertyId,
+    requestedBy: input.requestedBy,
+    propertyId: input.propertyId,
+  } satisfies EmbedOneJobData, {
+    jobId: `org:${input.organizationId}:embed-one:${input.propertyId}`,
   });
   return job.id;
 }
 
-export async function enqueueReindexAll(propertyId?: string) {
+export async function enqueueReindexAll(input: {
+  organizationId: string;
+  propertyId?: string;
+  requestedBy?: string;
+}) {
   const queue = getPropertyEmbedQueue();
   const job = await queue.add(
     JOBS.REINDEX_ALL,
-    { propertyId } satisfies ReindexAllJobData,
-    { jobId: propertyId ? `reindex-all:${propertyId}` : `reindex-all:${Date.now()}` }
+    {
+      organizationId: input.organizationId,
+      jobType: JOBS.REINDEX_ALL,
+      resourceId: input.propertyId,
+      requestedBy: input.requestedBy,
+      propertyId: input.propertyId,
+    } satisfies ReindexAllJobData,
+    {
+      jobId: input.propertyId
+        ? `org:${input.organizationId}:reindex-all:${input.propertyId}`
+        : `org:${input.organizationId}:reindex-all:${Date.now()}`,
+    }
   );
   return job.id;
 }
 
-export async function enqueueLeadPostCreate(leadId: string) {
+export async function enqueueLeadPostCreate(input: {
+  organizationId: string;
+  leadId: string;
+  requestedBy?: string;
+}) {
   const queue = getLeadProcessQueue();
   const job = await queue.add(
     JOBS.LEAD_POST_CREATE,
-    { leadId } satisfies LeadPostCreateJobData,
-    { jobId: `lead-post-create:${leadId}` }
+    {
+      organizationId: input.organizationId,
+      jobType: JOBS.LEAD_POST_CREATE,
+      resourceId: input.leadId,
+      requestedBy: input.requestedBy,
+      leadId: input.leadId,
+    } satisfies LeadPostCreateJobData,
+    { jobId: `org:${input.organizationId}:lead-post-create:${input.leadId}` }
   );
   return job.id;
 }
 
-export async function enqueueInvalidateSearchCache(reason?: string) {
+export async function enqueueInvalidateSearchCache(input: {
+  organizationId: string;
+  reason?: string;
+  requestedBy?: string;
+}) {
   const queue = getMaintenanceQueue();
   const job = await queue.add(
     JOBS.INVALIDATE_SEARCH_CACHE,
-    { reason } satisfies InvalidateSearchCacheJobData,
-    { jobId: `invalidate-search-cache:${Date.now()}` }
+    {
+      organizationId: input.organizationId,
+      jobType: JOBS.INVALIDATE_SEARCH_CACHE,
+      requestedBy: input.requestedBy,
+      reason: input.reason,
+    } satisfies InvalidateSearchCacheJobData,
+    { jobId: `org:${input.organizationId}:invalidate-search-cache:${Date.now()}` }
   );
   return job.id;
 }

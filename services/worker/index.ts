@@ -1,6 +1,7 @@
 import { Worker } from "bullmq";
 import { config } from "dotenv";
 import { join } from "path";
+import { logAuditEvent } from "@/lib/audit/log";
 import { embedPropertyById, listPropertyIds } from "@/lib/jobs/embed-property";
 import { processLeadPostCreate } from "@/lib/jobs/process-lead";
 import { invalidateSearchCache } from "@/lib/redis/cache";
@@ -22,6 +23,13 @@ config({ path: join(process.cwd(), ".env") });
 
 const workers: Worker[] = [];
 
+function requireOrganizationId(data: { organizationId?: string }) {
+  if (!data.organizationId) {
+    throw new Error("Job is missing organizationId");
+  }
+  return data.organizationId;
+}
+
 async function startWorkers() {
   const connected = await pingRedis();
   if (!connected) {
@@ -38,9 +46,19 @@ async function startWorkers() {
 
         if (job.name === JOBS.EMBED_ONE) {
           const data = job.data as EmbedOneJobData;
-          await embedPropertyById(data.propertyId);
-          await invalidateSearchCache();
+          const organizationId = requireOrganizationId(data);
+          await embedPropertyById(organizationId, data.propertyId);
+          await invalidateSearchCache(organizationId);
+          await logAuditEvent({
+            organizationId,
+            actorUserId: data.requestedBy ?? null,
+            action: "worker.embedding_generated",
+            objectType: "property",
+            objectId: data.propertyId,
+            metadata: { jobId: job.id },
+          });
           console.info("[worker] embed-one completed", {
+            organizationId,
             propertyId: data.propertyId,
             durationMs: Date.now() - startedAt,
           });
@@ -49,9 +67,19 @@ async function startWorkers() {
 
         if (job.name === JOBS.REINDEX_ALL) {
           const data = job.data as ReindexAllJobData;
-          const propertyIds = await listPropertyIds(data.propertyId);
-          const jobIds = await Promise.all(propertyIds.map((id) => enqueueEmbedProperty(id)));
+          const organizationId = requireOrganizationId(data);
+          const propertyIds = await listPropertyIds(organizationId, data.propertyId);
+          const jobIds = await Promise.all(
+            propertyIds.map((id) =>
+              enqueueEmbedProperty({
+                organizationId,
+                propertyId: id,
+                requestedBy: data.requestedBy,
+              })
+            )
+          );
           console.info("[worker] reindex-all enqueued", {
+            organizationId,
             count: jobIds.length,
             durationMs: Date.now() - startedAt,
           });
@@ -72,8 +100,18 @@ async function startWorkers() {
 
         if (job.name === JOBS.LEAD_POST_CREATE) {
           const data = job.data as LeadPostCreateJobData;
-          await processLeadPostCreate(data.leadId);
+          const organizationId = requireOrganizationId(data);
+          await processLeadPostCreate(organizationId, data.leadId);
+          await logAuditEvent({
+            organizationId,
+            actorUserId: data.requestedBy ?? null,
+            action: "worker.lead_processed",
+            objectType: "lead",
+            objectId: data.leadId,
+            metadata: { jobId: job.id },
+          });
           console.info("[worker] lead post-create completed", {
+            organizationId,
             leadId: data.leadId,
             durationMs: Date.now() - startedAt,
           });
@@ -94,8 +132,17 @@ async function startWorkers() {
 
         if (job.name === JOBS.INVALIDATE_SEARCH_CACHE) {
           const data = job.data as InvalidateSearchCacheJobData;
-          const deleted = await invalidateSearchCache();
+          const organizationId = requireOrganizationId(data);
+          const deleted = await invalidateSearchCache(organizationId);
+          await logAuditEvent({
+            organizationId,
+            actorUserId: data.requestedBy ?? null,
+            action: "worker.cache_invalidated",
+            objectType: "cache",
+            metadata: { jobId: job.id, reason: data.reason ?? "unspecified", deleted },
+          });
           console.info("[worker] invalidate-search-cache completed", {
+            organizationId,
             reason: data.reason ?? "unspecified",
             deleted,
             durationMs: Date.now() - startedAt,

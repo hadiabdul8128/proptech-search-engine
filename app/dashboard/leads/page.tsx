@@ -29,7 +29,21 @@ export default function DashboardLeadsPage() {
   }
 
   useEffect(() => {
-    loadLeads();
+    async function loadInitialLeads() {
+      setLoading(true);
+      const response = await fetch("/api/dashboard/leads");
+      const body = await response.json();
+      if (!response.ok) {
+        setError(body.error ?? "Failed to load leads");
+        setLoading(false);
+        return;
+      }
+      setLeads(body.leads ?? []);
+      setError(null);
+      setLoading(false);
+    }
+
+    void loadInitialLeads();
   }, []);
 
   async function updateStatus(id: string, status: LeadStatus) {
